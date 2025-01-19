@@ -1,10 +1,10 @@
 # LAMP_Compose
 
-Este proyecto contiene la configuración necesaria para levantar un entorno LAMP (Linux, Apache, MySQL/MariaDB, PHP) utilizando Docker Compose, e incluye phpMyAdmin para la administración de la base de datos. Además, se personalizan las páginas de error y se configuran directivas específicas para el servidor Apache.
+Este proyecto configura un entorno LAMP (Linux, Apache, MySQL/MariaDB y PHP) con Docker Compose e incluye phpMyAdmin para la administración de bases de datos. También proporciona páginas de error personalizadas y directivas de Apache ajustadas a este entorno.
 
 ---
 
-## Estructura de Directorios
+## Estructura de Carpetas
 
 ```bash
 proyecto-lamp/
@@ -22,41 +22,41 @@ proyecto-lamp/
 │       └── index.php (opcional)
 ```
 
-## Descripción de cada archivo
+## Descripción de Archivos
 
 1. **docker-compose.yml**  
    - Define los servicios:
-     - **web**: Contenedor con Apache + PHP 8.3.  
-     - **db**: Contenedor de la base de datos (MariaDB o MySQL).  
-     - **phpmyadmin**: Contenedor para administrar la base de datos vía web.  
-   - Configura puertos, volúmenes y variables de entorno.
+     - **web**: Apache + PHP 8.3  
+     - **db**: Base de datos (MariaDB o MySQL)  
+     - **phpmyadmin**: Interfaz web para gestionar la base de datos  
+   - Especifica puertos, volúmenes y variables de entorno para cada contenedor.
 
 2. **db_data/**  
-   - Carpeta o volumen local para almacenar datos persistentes de la base de datos.
+   - Carpeta destinada a la persistencia de datos de la base de datos.
 
 3. **apache-php/**  
-   - Carpeta con los archivos necesarios para construir la imagen personalizada de Apache + PHP 8.3.
+   - Contiene los elementos para construir la imagen de Apache + PHP 8.3.
 
    - **Dockerfile**  
-     - Basado en la imagen oficial de PHP (tag `8.3-apache`).  
-     - Instala extensiones como `mysqli`.  
-     - Copia y habilita configuraciones de Apache (apache2.conf, 000-default.conf) y páginas de error personalizadas.
+     - Basado en la imagen oficial `php:8.3-apache`.  
+     - Incluye extensiones como `mysqli`.  
+     - Copia la configuración de Apache y las páginas de error personalizadas.
 
    - **apache2.conf**  
-     - Configuración global de Apache.  
-     - Incluye la directiva para personalizar el ErrorDocument 404.
+     - Archivo de configuración global de Apache.  
+     - Incluye la directiva para la página de error 404.
 
    - **000-default.conf**  
-     - Configura el VirtualHost por defecto.  
-     - Cambia el `DirectoryIndex` a `datos1.php`.  
-     - Deshabilita la indexación de directorios (`Options -Indexes`).  
-     - Personaliza la página de error 403.
+     - Define el VirtualHost por defecto.  
+     - Cambia la página principal a `datos1.php`.  
+     - Desactiva el listado de directorios (`Options -Indexes`).  
+     - Personaliza el error 403.
 
    - **custom_404.html** y **custom_403.html**  
-     - Páginas estáticas para mostrar errores 404 y 403 de manera personalizada.
+     - Páginas de error personalizadas para 404 y 403, respectivamente.
 
    - **www/**  
-     - Directorio mapeado a `/var/www/html` dentro del contenedor.  
-       - **datos1.php**: Archivo principal establecido por `DirectoryIndex`.  
-       - **test_mysqli.php**: Prueba de conexión a la base de datos usando `mysqli`.  
-       - **index.php** (opcional): Archivo adicional de ejemplo o pruebas.
+     - Se mapea a `/var/www/html` dentro del contenedor.  
+       - **datos1.php**: Página principal por defecto (`DirectoryIndex`).  
+       - **test_mysqli.php**: Verifica la conexión con la base de datos.  
+       - **index.php** (opcional): Archivo adicional de prueba u otro contenido.
