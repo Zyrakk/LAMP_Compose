@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: ./apache-php
+      dockerfile: Dockerfile
+    container_name: apache-php
+    ports:
+      - "80:80"
+    volumes:
+      - ./apache-php/www:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.7
+    container_name: mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: prueba
+      MYSQL_DATABASE: prueba
+      MYSQL_USER: prueba
+      MYSQL_PASSWORD: prueba
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8080:80"
+
+volumes:
+  db_data:
