@@ -30,10 +30,7 @@ proyecto-lamp/
      - **phpmyadmin**: Interfaz web para gestionar la base de datos
    - Especifica puertos, volúmenes y variables de entorno para cada contenedor.
 
-2. **db_data/**
-   - Carpeta destinada a la persistencia de datos de la base de datos.
-
-3. **apache-php/**
+2. **apache-php/**
    - Contiene los elementos para construir la imagen de Apache + PHP 8.3.
 
    - **Dockerfile**
