@@ -1,0 +1,8 @@
+# Prioriza index-asir.php
+DirectoryIndex index-asir.php
+
+# Autenticación Básica
+AuthType Basic
+AuthName "Directorio protegido"
+AuthUserFile /var/www/html/archivos/.htpasswd
+Require valid-user
