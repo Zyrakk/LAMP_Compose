@@ -64,7 +64,7 @@ proyecto-lamp/
      - Personaliza la página de error 403.
 
    - **cv-web.conf**, **blog-web.conf**, **owncloud-web.conf**
-     - Configuración de servidores virtuales para `cv.tudominio.com`, `blog.tudominio.com` y `www.tudominio.com:8123`.
+     - Configuración de servidores virtuales para `cv.localhost.com`, `blog.localhost.com` y `www.localhost.com:8123`.
 
    - **custom_404.html** y **custom_403.html**
      - Páginas de error personalizadas para 404 y 403.
@@ -106,10 +106,10 @@ proyecto-lamp/
    - **phpMyAdmin**: `http://localhost:8081`
    - **Prueba de conexión a MySQL**: `http://localhost/test_mysqli.php`
    - **Subdominios VirtualHost** (añadir a `/etc/hosts` si es necesario):
-     - `http://cv.tudominio.com`
-     - `http://blog.tudominio.com`
+     - `http://cv.localhost.com`
+     - `http://blog.localhost.com`
    - **Servidor Virtual por Puerto**:
-     - `http://www.tudominio.com:8123`
+     - `http://www.localhost.com:8123`
    - **Acceso protegido a `/archivos`**: `http://localhost/archivos` (Usuario: `ASIR`, Contraseña: `123456`).
 
 5. **Detener contenedores**
@@ -120,7 +120,13 @@ proyecto-lamp/
 ---
 
 ## Notas
-- Asegúrate de que los subdominios (`cv.tudominio.com`, `blog.tudominio.com`, etc.) estén configurados en DNS o en el archivo `/etc/hosts`.
+- Asegúrate de que los subdominios (`cv.localhost.com`, `blog.localhost.com`, etc.) estén configurados en DNS o en el archivo `/etc/hosts`.
+```/etc/hosts
+127.0.0.1    cv.tudominio.com
+127.0.0.1    blog.tudominio.com
+127.0.0.1    www.tudominio.com
+```
+
 - Puedes personalizar los archivos de configuración de Apache en `apache-php/`.
 - Si deseas persistencia de datos para MySQL/MariaDB, asegúrate de usar un volumen (`db_data`).
 
