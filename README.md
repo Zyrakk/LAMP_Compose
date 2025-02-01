@@ -122,9 +122,9 @@ proyecto-lamp/
 ## Notas
 - Asegúrate de que los subdominios (`cv.localhost.com`, `blog.localhost.com`, etc.) estén configurados en DNS o en el archivo `/etc/hosts`.
 ```/etc/hosts
-127.0.0.1    cv.tudominio.com
-127.0.0.1    blog.tudominio.com
-127.0.0.1    www.tudominio.com
+127.0.0.1    cv.localhost.com
+127.0.0.1    blog.localhost.com
+127.0.0.1    www.localhost.com
 ```
 
 - Puedes personalizar los archivos de configuración de Apache en `apache-php/`.
