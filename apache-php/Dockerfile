@@ -3,6 +3,10 @@ FROM php:8.3-apache
 # Instala la extensión mysqli
 RUN docker-php-ext-install mysqli
 
+# Crea directorios necesarios
+RUN mkdir -p /var/www/blog /var/www/cv /var/www/owncloud
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 # Copia los ficheros de configuración de Apache
 COPY apache2.conf /etc/apache2/apache2.conf
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
