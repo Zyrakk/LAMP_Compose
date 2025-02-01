@@ -87,7 +87,7 @@ proyecto-lamp/
 1. **Clonar el proyecto**
    ```bash
    git clone <repositorio>
-   cd proyecto-lamp
+   cd LAMP_Compose
    ```
 
 2. **Construir y ejecutar los contenedores**
