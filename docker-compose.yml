@@ -15,7 +15,7 @@ services:
     depends_on:
       - db
     restart: unless-stopped
-    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    command: ["/bin/sh", "-c", "rm -f /var/run/apache2/apache2.pid && apache2-foreground"]
 
   db:
     image: mariadb:10.7
