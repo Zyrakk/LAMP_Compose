@@ -3,6 +3,9 @@ FROM php:8.3-apache
 # Instala la extensión mysqli
 RUN docker-php-ext-install mysqli
 
+# Crear la carpeta de logs de Apache y darle permisos
+RUN mkdir -p /etc/apache2/logs && chmod -R 755 /etc/apache2/logs
+
 # Crea directorios necesarios para VirtualHosts
 RUN mkdir -p /var/www/blog /var/www/cv /var/www/owncloud /var/log/apache2
 
