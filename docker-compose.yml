@@ -8,12 +8,14 @@ services:
     container_name: apache-php
     ports:
       - "80:80"
-      - "8123:8123"    # Necesario para el VirtualHost por puerto
+      - "8123:8123"    # Para el VirtualHost por puerto
     volumes:
       - ./apache-php/www:/var/www/html
+      - ./apache-php/logs:/var/log/apache2
     depends_on:
       - db
     restart: unless-stopped
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
 
   db:
     image: mariadb:10.7
