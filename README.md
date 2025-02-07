@@ -130,5 +130,9 @@ proyecto-lamp/
 - Puedes personalizar los archivos de configuración de Apache en `apache-php/`.
 - Si deseas persistencia de datos para MySQL/MariaDB, asegúrate de usar un volumen (`db_data`).
 
-🚀 Con esta configuración, tienes un entorno LAMP funcional con autenticación, VirtualHosts y gestión de bases de datos con phpMyAdmin.
-
+## Rehacer los contenedores
+```bash
+docker compose down --volumes --remove-orphans
+docker compose build --no-cache
+docker compose up -d
+```
